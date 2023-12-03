@@ -5,38 +5,40 @@ import timeit
 import matplotlib.pyplot as plt
 import random
 import sympy as sp
-import numpy as np
 
 
-def heapify(arr, n, i):
+def heapify(list_of_num, n, i):
     largest = i
     left = 2 * i + 1
     right = 2 * i + 2
 
     # Проверяем, является ли левый потомок больше родителя
-    if left < n and arr[i] < arr[left]:
+    if left < n and list_of_num[i] < list_of_num[left]:
         largest = left
 
-    # Проверяем, является ли правый потомок больше родителя или левого потомка
-    if right < n and arr[largest] < arr[right]:
+    # Проверяем, является ли правый потомок 
+    # больше родителя или левого потомка
+    if right < n and list_of_num[largest] < list_of_num[right]:
         largest = right
 
-    # Если дочерний элемент больше родительского, меняем их местами и продолжаем сортировку
+    # Если дочерний элемент больше родительского, 
+    # меняем их местами и продолжаем сортировку
     if largest != i:
-        arr[i], arr[largest] = arr[largest], arr[i]
-        heapify(arr, n, largest)
+        list_of_num[i], list_of_num[largest] = list_of_num[largest], list_of_num[i]
+        heapify(list_of_num, n, largest)
 
-def heapSort(arr):
-    n = len(arr)
+def heapSort(list_of_num):
+    n = len(list_of_num)
 
     # Создаем максимальную кучу
     for i in range(n // 2 - 1, -1, -1):
-        heapify(arr, n, i)
+        heapify(list_of_num, n, i)
 
-    # Перемещаем максимальный элемент в конец массива и снова создаем максимальную кучу
+    # Перемещаем максимальный элемент в конец списка 
+    # и снова создаем максимальную кучу
     for i in range(n - 1, 0, -1):
-        arr[i], arr[0] = arr[0], arr[i]
-        heapify(arr, i, 0)
+        list_of_num[i], list_of_num[0] = list_of_num[0], list_of_num[i]
+        heapify(list_of_num, i, 0)
 
 def find_min_grh(x, y):
     sum_x = sum(x)
@@ -61,9 +63,9 @@ def find_min_grh(x, y):
 def ever_sort_gph(x, y):
     for i in range(1000, 50001, 1000):
         x.append(i)
-        arr = np.array([j for j in range(i)], int)
+        list_of_num = [j for j in range(i)]
         execution_time = timeit.timeit(
-            lambda: heapSort(arr), number=1
+            lambda: heapSort(list_of_num), number=1
         )
         y.append(execution_time)
     
@@ -74,8 +76,8 @@ def ever_sort_gph(x, y):
         y,
         x1,
         y1, 
-        "Отсортированный массив", 
-        "Размер массива", 
+        "Отсортированный список", 
+        "Размер списка", 
         "Время работы функции"
     )
 
@@ -83,9 +85,9 @@ def ever_sort_gph(x, y):
 def worst_sort_gph(x, y):
     for i in range(1000, 50001, 1000):
         x.append(i)
-        arr = np.array([j for j in range(i, 0, -1)], int)
+        list_of_num = [j for j in range(i, 0, -1)]
         execution_time = timeit.timeit(
-            lambda: heapSort(arr), number=1
+            lambda: heapSort(list_of_num ), number=1
         )
         y.append(execution_time)
 
@@ -96,8 +98,8 @@ def worst_sort_gph(x, y):
         y,
         x1,
         y1, 
-        "Неотсортированный массив", 
-        "Размер массива", 
+        "Неотсортированный список", 
+        "Размер списка", 
         "Время работы функции"
     )
 
@@ -110,9 +112,9 @@ def gen_list(n):
 def sr_sort_gph(x, y):
     for i in range(1000, 50001, 1000):
         x.append(i)
-        arr = np.array(gen_list(i), int)
+        list_of_num  = gen_list(i)
         execution_time = timeit.timeit(
-            lambda: heapSort(arr), number=1
+            lambda: heapSort(list_of_num), number=1
         ) 
         y.append(execution_time)
     
@@ -124,7 +126,7 @@ def sr_sort_gph(x, y):
         x1,
         y1, 
         "Cписок с радомными значениями", 
-        "Размер массива", 
+        "Размер списка", 
         "Время работы функции"
     )
 
@@ -139,11 +141,11 @@ def create_grf(x, y, x1, y1, name_of_graph, name_x, name_y):
     plt.show()
 
 def main():
-    # Отсортированный массив
+    # Отсортированный список
     ever_sort_gph(x=[], y=[])
-    # массив в обратном порядке
+    # Список в обратном порядке
     worst_sort_gph(x=[], y=[])
-    # Случайный массив
+    # Случайный список
     sr_sort_gph(x=[], y=[])
 
 if __name__ == "__main__":
