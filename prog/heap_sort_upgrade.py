@@ -27,6 +27,7 @@ def heapify(list_of_num, n, i):
         list_of_num[i], list_of_num[largest] = list_of_num[largest], list_of_num[i]
         heapify(list_of_num, n, largest)
 
+
 def heapSort(list_of_num):
     n = len(list_of_num)
 
@@ -39,6 +40,7 @@ def heapSort(list_of_num):
     for i in range(n - 1, 0, -1):
         list_of_num[i], list_of_num[0] = list_of_num[0], list_of_num[i]
         heapify(list_of_num, i, 0)
+
 
 def find_min_grh(x, y):
     sum_x = sum(x)
@@ -59,6 +61,7 @@ def find_min_grh(x, y):
     x1 = x
     x2 = [solution[a] * i + solution[b] for i in x1]
     return x1, x2
+
 
 def ever_sort_gph(x, y):
     for i in range(1000, 50001, 1000):
@@ -103,11 +106,13 @@ def worst_sort_gph(x, y):
         "Время работы функции"
     )
 
+
 def gen_list(n):
     nums = []
     for _ in range(n):
         nums.append(random.randint(1, 100))
     return nums
+
 
 def sr_sort_gph(x, y):
     for i in range(1000, 50001, 1000):
@@ -130,6 +135,7 @@ def sr_sort_gph(x, y):
         "Время работы функции"
     )
 
+
 def create_grf(x, y, x1, y1, name_of_graph, name_x, name_y):
     plt.plot(x, y, 'o', color='red')
     plt.plot(x1, y1, 'o-', color='blue')
@@ -140,6 +146,7 @@ def create_grf(x, y, x1, y1, name_of_graph, name_x, name_y):
     plt.title(name_of_graph)
     plt.show()
 
+
 def main():
     # Отсортированный список
     ever_sort_gph(x=[], y=[])
@@ -147,6 +154,7 @@ def main():
     worst_sort_gph(x=[], y=[])
     # Случайный список
     sr_sort_gph(x=[], y=[])
+
 
 if __name__ == "__main__":
     main()

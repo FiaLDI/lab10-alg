@@ -26,6 +26,7 @@ def heapify(arr, n, i):
         arr[i], arr[largest] = arr[largest], arr[i]
         heapify(arr, n, largest)
 
+
 def heapSort(arr):
     n = len(arr)
 
@@ -37,6 +38,7 @@ def heapSort(arr):
     for i in range(n - 1, 0, -1):
         arr[i], arr[0] = arr[0], arr[i]
         heapify(arr, i, 0)
+
 
 def find_min_grh(x, y):
     sum_x = sum(x)
@@ -57,6 +59,7 @@ def find_min_grh(x, y):
     x1 = x
     x2 = [solution[a] * i + solution[b] for i in x1]
     return x1, x2
+
 
 def ever_sort_gph(x, y):
     for i in range(1000, 50001, 1000):
@@ -107,6 +110,7 @@ def gen_list(n):
         nums.append(random.randint(1, 100))
     return nums
 
+
 def sr_sort_gph(x, y):
     for i in range(1000, 50001, 1000):
         x.append(i)
@@ -128,6 +132,7 @@ def sr_sort_gph(x, y):
         "Время работы функции"
     )
 
+
 def create_grf(x, y, x1, y1, name_of_graph, name_x, name_y):
     plt.plot(x, y, 'o', color='red')
     plt.plot(x1, y1, 'o-', color='blue')
@@ -138,6 +143,7 @@ def create_grf(x, y, x1, y1, name_of_graph, name_x, name_y):
     plt.title(name_of_graph)
     plt.show()
 
+
 def main():
     # Отсортированный массив
     ever_sort_gph(x=[], y=[])
@@ -145,6 +151,7 @@ def main():
     worst_sort_gph(x=[], y=[])
     # Случайный массив
     sr_sort_gph(x=[], y=[])
+
 
 if __name__ == "__main__":
     main()
